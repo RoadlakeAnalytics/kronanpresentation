@@ -1,12 +1,14 @@
-{"name": "interaktiv-presentation",
+{
+  "name": "interaktiv-presentation",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://<username>.github.io/<repository-name>",
+  "homepage": "https://roadlakeanalytics.github.io/kronanpresentation",
   "dependencies": {
     "@react-spring/parallax": "^9.4.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1"
+    "react-scripts": "5.0.1",
+    "react-router-dom": "^6.14.1"  
   },
   "scripts": {
     "start": "react-scripts start",
@@ -15,6 +17,7 @@
     "deploy": "gh-pages -d build"
   },
   "devDependencies": {
-    "gh-pages": "^4.0.0"
+    "gh-pages": "^4.0.0",
+    "eslint": "^8.57.1"
   }
 }

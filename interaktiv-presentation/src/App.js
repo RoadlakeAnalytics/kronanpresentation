@@ -1,74 +1,110 @@
-import React, { Suspense, lazy } from 'react';
-import { Parallax } from '@react-spring/parallax';
-import './styles/App.css';
+import React, { Suspense, lazy, useRef } from "react";
+import { Parallax, ParallaxLayer } from "@react-spring/parallax";
+import "./styles/App.css";
 
-const WelcomeSlide = lazy(() => import('./slides/WelcomeSlide'));
-const EkonomiSlide = lazy(() => import('./slides/EkonomiSlide'));
-const HRESlide = lazy(() => import('./slides/HRESlide'));
-const TeknikSlide = lazy(() => import('./slides/TeknikSlide'));
-const Topics = lazy(() => import('./components/Topics'));
+const WelcomeSlide = lazy(() => import("./slides/WelcomeSlide"));
+const EkonomiSlide = lazy(() => import("./slides/EkonomiSlide"));
+const HRESlide = lazy(() => import("./slides/HRESlide"));
+const TeknikSlide = lazy(() => import("./slides/TeknikSlide"));
+const Topics = lazy(() => import("./components/Topics"));
 
-# Ekonomi Slides
-const EkonomiSlide1 = lazy(() => import('./slides/EkonomiSlide1'));
-const EkonomiSlide2 = lazy(() => import('./slides/EkonomiSlide2'));
+// Ekonomi Slides
+const EkonomiSlide1 = lazy(() => import("./slides/EkonomiSlide1"));
+const EkonomiSlide2 = lazy(() => import("./slides/EkonomiSlide2"));
 
-# HR Slides
-const HRESlide1 = lazy(() => import('./slides/HRESlide1'));
-const HRESlide2 = lazy(() => import('./slides/HRESlide2'));
+// HR Slides
+const HRESlide1 = lazy(() => import("./slides/HRESlide1"));
+const HRESlide2 = lazy(() => import("./slides/HRESlide2"));
 
-# Teknik Slides
-const TeknikSlide1 = lazy(() => import('./slides/TeknikSlide1'));
+// Teknik Slides
+const TeknikSlide1 = lazy(() => import("./slides/TeknikSlide1"));
 
 function App() {
-  return (
-    <div className="App">
-      <Parallax pages={10}>
-        <Suspense fallback={<div>Loading...</div>}>
-          {/* Grundslides */}
-          <Parallax.Layer offset={0} speed={0.5}>
-            <WelcomeSlide />
-          </Parallax.Layer>
+	const parallaxRef = useRef();
 
-          <Parallax.Layer offset={1} speed={0.5}>
-            <EkonomiSlide />
-          </Parallax.Layer>
+	return (
+		<div className="App">
+			<Parallax
+				pages={10}
+				ref={parallaxRef}
+			>
+				<Suspense fallback={<div>Loading...</div>}>
+					{/* Grundslides */}
+					<ParallaxLayer
+						offset={0}
+						speed={0.5}
+					>
+						<WelcomeSlide />
+					</ParallaxLayer>
 
-          <Parallax.Layer offset={2} speed={0.5}>
-            <HRESlide />
-          </Parallax.Layer>
+					<ParallaxLayer
+						offset={1}
+						speed={0.5}
+					>
+						<EkonomiSlide />
+					</ParallaxLayer>
 
-          <Parallax.Layer offset={3} speed={0.5}>
-            <TeknikSlide />
-          </Parallax.Layer>
+					<ParallaxLayer
+						offset={2}
+						speed={0.5}
+					>
+						<HRESlide />
+					</ParallaxLayer>
 
-          <Parallax.Layer offset={4} speed={0.5}>
-            <Topics />
-          </Parallax.Layer>
+					<ParallaxLayer
+						offset={3}
+						speed={0.5}
+					>
+						<TeknikSlide />
+					</ParallaxLayer>
 
-          {/* Ekonomi Slides */}
-          <Parallax.Layer offset={5} speed={0.5}>
-            <EkonomiSlide1 />
-          </Parallax.Layer>
-          <Parallax.Layer offset={6} speed={0.5}>
-            <EkonomiSlide2 />
-          </Parallax.Layer>
+					<ParallaxLayer
+						offset={4}
+						speed={0.5}
+					>
+						<Topics parallaxRef={parallaxRef} />
+					</ParallaxLayer>
 
-          {/* HR Slides */}
-          <Parallax.Layer offset={7} speed={0.5}>
-            <HRESlide1 />
-          </Parallax.Layer>
-          <Parallax.Layer offset={8} speed={0.5}>
-            <HRESlide2 />
-          </Parallax.Layer>
+					{/* Ekonomi Slides */}
+					<ParallaxLayer
+						offset={5}
+						speed={0.5}
+					>
+						<EkonomiSlide1 />
+					</ParallaxLayer>
+					<ParallaxLayer
+						offset={6}
+						speed={0.5}
+					>
+						<EkonomiSlide2 />
+					</ParallaxLayer>
 
-          {/* Teknik Slides */}
-          <Parallax.Layer offset={9} speed={0.5}>
-            <TeknikSlide1 />
-          </Parallax.Layer>
-        </Suspense>
-      </Parallax>
-    </div>
-  );
+					{/* HR Slides */}
+					<ParallaxLayer
+						offset={7}
+						speed={0.5}
+					>
+						<HRESlide1 />
+					</ParallaxLayer>
+					<ParallaxLayer
+						offset={8}
+						speed={0.5}
+					>
+						<HRESlide2 />
+					</ParallaxLayer>
+
+					{/* Teknik Slides */}
+					<ParallaxLayer
+						offset={9}
+						speed={0.5}
+					>
+						<TeknikSlide1 />
+					</ParallaxLayer>
+				</Suspense>
+			</Parallax>
+		</div>
+	);
 }
 
 export default App;
+
