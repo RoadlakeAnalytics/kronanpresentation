@@ -22,8 +22,20 @@ const TeknikSlide1 = lazy(() => import("./slides/TeknikSlide1"));
 function App() {
 	const parallaxRef = useRef();
 
+	const handleNextView = () => {
+		if (parallaxRef.current) {
+			parallaxRef.current.scrollTo(parallaxRef.current.current + 1);
+		}
+	};
+
+	const handlePrevView = () => {
+		if (parallaxRef.current) {
+			parallaxRef.current.scrollTo(parallaxRef.current.current - 1);
+		}
+	};
+
 	return (
-		<div className="App">
+		<div className="App" onClick={handleNextView}>
 			<Parallax
 				pages={10}
 				ref={parallaxRef}
@@ -102,9 +114,16 @@ function App() {
 					</ParallaxLayer>
 				</Suspense>
 			</Parallax>
+
+			<div className="arrow arrow-left" onClick={handlePrevView}></div>
+			<div className="arrow arrow-right" onClick={handleNextView}></div>
+			<div className="hamburger-menu">
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
 		</div>
 	);
 }
 
 export default App;
-
