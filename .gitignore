@@ -4,4 +4,4 @@ setup_project.py
 node_modules/build
 node_modules/.DS_Store
 node_modules/.env
-.env
+.env 
