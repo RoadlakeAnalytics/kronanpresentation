@@ -1,0 +1,21 @@
+/* src/slides/Slide.css */
+.slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
+  background-color: #f5f5f5;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .slide h1 {
+    font-size: 24px;
+  }
+
+  .slide p {
+    font-size: 16px;
+  }
+}
