@@ -49,7 +49,7 @@ npm audit fix - -force
 
 **Obs: ** Använd `- -force` endast om du är medveten om att det kan introducera brytande förändringar.
 
-# h. Starta Projektet Lokalt
+# h. Starta Projektet Lokalt 
 Efter att ha installerat beroenden, starta projektet:
 npm start
 
